@@ -1,13 +1,14 @@
-const API_URL = 'https://localhost:5000/hf';
+const API_URL = 'https://localhost:5000/api';
 
 export const API_URLS = {
-  'sendMessage': { url: `${API_URL}/sendMessage`, method: 'POST' },
+  'models': { url: ({ provider }) => `${API_URL}/${provider}/models`, method: 'GET' },
+  'sendMessage': { url: ({ provider }) => `${API_URL}/${provider}/sendMessage`, method: 'POST' },
 };
 
 const makeRequest = async(key, options) => {
-  const { params = {}, queryParams, ...rest } = options;
-  const { method, url: item } = API_URLS[key];
-  let url = new URL(item);
+  const { params = {}, queryParams, provider, ...rest } = options;
+  const { method, url: getUrl } = API_URLS[key];
+  let url = typeof getUrl === 'function' ? new URL(getUrl({ provider })) : new URL(getUrl);
   if (queryParams) {
     url.search = new URLSearchParams(queryParams).toString();
   }
