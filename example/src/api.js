@@ -25,6 +25,8 @@ const makeRequest = async(key, options) => {
   return result.json();
 }
 
-export default {
+const exports = {
   makeRequest,
-};
+}; 
+
+export default exports;
