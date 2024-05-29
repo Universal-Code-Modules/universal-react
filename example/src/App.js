@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 import styled from 'styled-components';
 
 import api from './api';
@@ -17,7 +21,7 @@ function App() {
   const [isInited, setInited] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [models, setModels] = useState([]);
-  const [values, setValues] = useState({ provider: 'hf' });
+  const [values, setValues] = useState({ provider: 'openai' });
   const [messages, setMessages] = useState([]);
   const onSend = useCallback(async (e) => {
     if (isLoading && !values.provider) {

@@ -1,10 +1,8 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react';
 import { Button as BsButton } from './components/bootstrap';
 import { Button as FbButton } from './components/flowbite';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   const onButtonClick = useCallback((e) => {
     console.log('Button Clicked', e);
   }, []);
