@@ -1,68 +1,41 @@
 {
-  "name": "universal-react",
+  "name": "example",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "build-storybook-bootstrap": "npm run build-storybook -- --config-dir .libraries-storybooks/.storybook-bootstrap -o .storybook-static/bootstrap",
-    "build-storybook-flowbite": "npm run build-storybook -- --config-dir .libraries-storybooks/.storybook-flowbite -o .storybook-static/flowbite",
-    "build-storybook-children": "concurrently 'npm run build-storybook-flowbite' 'npm run build-storybook-bootstrap'",
-    "build-storybook-parent": "npm run build-storybook -- -o .storybook-static/main",
-    "build-storybook": "storybook build",
-    "build-storybooks": "npm run build-storybook-parent && npm run build-storybook-children",
-    "storybook-bootstrap": "npm run storybook -- --config-dir .libraries-storybooks/.storybook-bootstrap --port 6002 --no-open",
-    "storybook-flowbite": "npm run storybook -- --config-dir .libraries-storybooks/.storybook-flowbite --port 6003 --no-open",
-    "storybook-children": "concurrently 'npm run storybook-bootstrap' 'npm run storybook-flowbite'",
-    "storybook": "storybook dev",
-    "storybook-parent": "wait-on http://localhost:6002 && wait-on http://localhost:6003 && npm run storybook -- --port 6001",
-    "storybook-main": "concurrently 'npm run storybook-children' 'npm run storybook-parent'"
-  },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
-    "flowbite": "^2.3.0",
-    "flowbite-react": "^0.7.3",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
-    "react-dom": "^18.2.0",
-    "redux": "^5.0.1"
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "styled-components": "^6.1.11",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "@chromatic-com/storybook": "^1.2.25",
-    "@storybook/addon-essentials": "^8.0.4",
-    "@storybook/addon-interactions": "^8.0.4",
-    "@storybook/addon-links": "^8.0.4",
-    "@storybook/addon-onboarding": "^8.0.4",
-    "@storybook/blocks": "^8.0.4",
-    "@storybook/react": "^8.0.4",
-    "@storybook/react-vite": "^8.0.4",
-    "@storybook/test": "^8.0.4",
-    "@types/react": "^18.2.64",
-    "@types/react-dom": "^18.2.21",
-    "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.18",
-    "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-react": "^7.34.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "eslint-plugin-storybook": "^0.8.0",
-    "postcss": "^8.4.36",
-    "prop-types": "^15.8.1",
-    "storybook": "^8.0.4",
-    "tailwindcss": "^3.4.1",
-    "vite": "^5.1.6",
-    "vite-plugin-eslint": "^1.8.1",
-    "wait-on": "^7.2.0"
+  "scripts": {
+    "start": "HTTPS=true SSL_CRT_FILE=.cert/cert.pem SSL_KEY_FILE=.cert/key.pem react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
-      "plugin:storybook/recommended"
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
